@@ -8,7 +8,7 @@
     This is the window that'll appear. Logs will continue to save as long as you keep it open.
 3. Enable webhooks in Tot and set the address to `http://localhost:2137/message`
 
-    (pending screenshot)
+    ![Example of the webhook setting](img/settings.png)
 
 4. Local chat messages will be exported to files, named `<year-month-day>.txt`, located within the same directory as the `.exe` file. This will always assume UTC timezone.
 ![Example of directory with exported logs](img/directory.png)
