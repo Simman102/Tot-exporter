@@ -1,3 +1,3 @@
 fastapi[standard]==0.115.12
 pywin32==304
-pywin32-ctytpes==0.2.3
+pyxwin32-ctypes==0.2.3
