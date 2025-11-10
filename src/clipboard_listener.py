@@ -31,7 +31,7 @@ if sys.platform == 'win32':
             if msg == WM_CLIPBOARDUPDATE:
                 time.sleep(0.1)
                 clipboard_content = self._read_clipboard()
-                if self.IP_ADDRESS_REGEX.match(clipboard_content):
+                if clipboard_content is not None and self.IP_ADDRESS_REGEX.match(clipboard_content):
                     self.SERVER_IP = clipboard_content[:-5]
 
 
