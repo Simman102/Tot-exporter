@@ -13,7 +13,7 @@ if sys.platform == 'win32':
     class ClipboardListener:
         def __init__(self):
             self.SERVER_IP = None
-            self.IP_ADDRESS_REGEX = re.compile(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\:7777$')
+            self.IP_ADDRESS_REGEX = re.compile(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\:\d{4}$')
 
         def _read_clipboard(self):
             try:
