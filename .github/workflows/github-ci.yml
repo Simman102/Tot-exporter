@@ -8,17 +8,32 @@ on:
 
 jobs:
   exe:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: PyInstaller Windows
-        uses: JackMcKew/pyinstaller-action-windows@main
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          path: src
-          
-      - uses: actions/upload-artifact@v4
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: "src/requirements.txt"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r src/requirements.txt pyinstaller
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build Tot-exporter.exe
+        working-directory: src
+        run: pyinstaller --clean --noconfirm Tot-exporter.spec
+
+      - name: Upload executable artifact
+        uses: actions/upload-artifact@v4
         with:
           name: Tot-exporter.exe
-          path: src/dist/windows
+          path: src/dist/Tot-exporter.exe
