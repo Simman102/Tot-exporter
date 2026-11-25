@@ -3,10 +3,18 @@
 
 a = Analysis(
     ['Tot-exporter.py'],
-    pathex=[],
+    pathex=['.'],
     binaries=[],
     datas=[],
-    hiddenimports=[],
+    hiddenimports=[
+        'pystray._win32',
+        'PIL._tkinter_finder',
+        'uvicorn.logging',
+        'uvicorn.loops.asyncio',
+        'uvicorn.protocols.http.h11_impl',
+        'uvicorn.lifespan.on',
+        'uvicorn.lifespan.off',
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -29,10 +37,11 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='tot_exporter.ico',
 )
